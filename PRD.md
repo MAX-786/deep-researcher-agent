@@ -3,61 +3,7 @@
 **Version:** 0.1.0
 **Date:** April 12, 2025
 
-## 1. Introduction
-
-This Project Requirements Document (PRD) outlines the requirements for a Proof of Concept (PoC) of DeepResearcher AI Agent. The goal of this PoC is to demonstrate the core functionalities of the system, focusing on user interaction, research paper processing, and basic AI-driven insights. This PoC is designed to be achievable within a compressed timeframe of four sprints, with each sprint lasting four days (total of 16 working days), for showcasing at a hackathon. The focus will be on demonstrating a functional, albeit limited, version of the key features.
-
-## 2. Goals
-
-* Develop a functional PoC of an DeepResearcher AI Agent within 16 working days.
-* Demonstrate the ability to upload research papers, process them using AI, and retrieve information based on user queries.
-* Showcase a basic chat-like interface for user interaction.
-* Implement a rudimentary form of semantic search over uploaded documents.
-* Lay the groundwork for future expansion, including knowledge graph integration.
-
-## 3. Scope
-
-This PoC will include the following core functionalities:
-
-* User interface for query input and response display.
-* Basic backend API for receiving user queries and file uploads.
-* Processing of uploaded PDF research papers (text extraction, chunking, embedding).
-* Semantic search functionality over processed documents.
-* Display of AI-generated responses based on search results.
-* Simple chat history persistence within a single session.
-
-This PoC will **not** include:
-
-* Full user authentication and authorization.
-* Comprehensive chat history across sessions.
-* Integration with a knowledge graph.
-* Advanced features like paper review generation based on multiple papers.
-* Support for multiple file formats beyond PDF.
-* Fine-grained control over chunking strategies.
-* Advanced semantic ranking or filtering of search results.
-* Deployment to a fully production-ready environment.
-
-## 4. Sprint Plan (4 Sprints x 4 Days Each)
-
-This plan outlines the high-level objectives for each sprint. Detailed tasks will be defined at the beginning of each sprint.
-
-**Sprint 1 (Days 1-4): Frontend Foundation & Backend Setup**
-
-* Focus: Building the basic user interface and setting up the foundational backend infrastructure for receiving queries and file uploads.
-
-**Sprint 2 (Days 5-8): File Upload & Processing Pipeline**
-
-* Focus: Implementing the file upload functionality and the initial pipeline for processing uploaded PDF documents (text extraction, basic chunking).
-
-**Sprint 3 (Days 9-12): Embedding Generation & Semantic Search**
-
-* Focus: Integrating with an embedding service (e.g., Azure OpenAI Service) to generate embeddings for the document chunks and implementing basic semantic search functionality.
-
-**Sprint 4 (Days 13-16): Query Handling & Response Display**
-
-* Focus: Connecting the frontend to the backend for query submission, retrieving relevant information using semantic search, generating basic AI responses, and displaying them in the UI.
-
-## 5. Detailed Requirements (User Stories)
+## Detailed Requirements (User Stories)
 
 | ID      | Short Description             | User Story                                                     | Expected Behaviour / Outcome                                                                                                                                                                                             |
 | :------ | :---------------------------- | :------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -77,32 +23,3 @@ This plan outlines the high-level objectives for each sprint. Detailed tasks wil
 | **S4-R2** | Generate Basic AI Response  | As a developer, the system should generate a concise answer based on the retrieved context. | The retrieved document chunks (context) are used as input to a language model (e.g., Azure OpenAI Service - a simpler model) to generate a relevant answer to the user's query.                                  |
 | **S4-R3** | Display AI Response in UI   | As a user, I want to see the AI's answer to my question based on the uploaded documents. | The AI-generated response is displayed in the chat interface on the frontend, clearly presented to the user.                                                                                             |
 | **S4-R4** | Simple Chat History (Session) | As a user, I want to see a history of my questions and the AI's responses within the current session. | The user's queries and the AI's responses are displayed chronologically in the chat interface during the current session. This history is not persisted across different sessions for this PoC. |
-
-## 6. Technology Stack (Proposed for PoC)
-
-* **Frontend:** React (or a similar lightweight framework)
-* **Backend:** Python (FastAPI or Flask - for rapid development)
-* **LLM/Embedding Service:** Azure OpenAI Service (using a cost-effective model)
-* **Vector Database:** Azure Cognitive Search (Free Tier)
-* **File Storage:** Azure Blob Storage (Free Tier)
-* **Deployment (PoC):** Local development server or basic Azure App Service (Free Tier if feasible, otherwise local)
-
-## 7. Success Metrics for PoC
-
-* Successful implementation of the basic user interface.
-* Ability to upload and process at least one PDF research paper.
-* Successful generation and storage of vector embeddings for the processed document.
-* Functional semantic search that retrieves relevant chunks based on user queries.
-* Generation and display of a basic AI response based on the search results.
-* Demonstration of a simple chat-like interaction within a session.
-
-## 8. Out of Scope for PoC but Potential Future Enhancements
-
-* Knowledge graph integration for relationship analysis.
-* Support for multiple file types.
-* More sophisticated chunking and embedding strategies.
-* User authentication and persistent chat history.
-* Advanced UI features for visualizing search results or relationships.
-* Evaluation metrics for AI response quality.
-
-This PRD serves as a starting point for the development of the DeepResearcher AI Agent PoC. The requirements outlined here are prioritized for rapid development within the hackathon timeframe. Flexibility and adaptability will be crucial during the development process.
