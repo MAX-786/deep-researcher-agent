@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PDF Upload</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .btn {
+            background-color: #0078d4;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Upload PDF to Azure</h1>
+    <form action="/upload-pdf" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="file">Select a PDF file:</label>
+            <input type="file" id="file" name="file" accept=".pdf" required>
+        </div>
+        <button type="submit" class="btn">Upload</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,1 @@
+azure-ai-documentintelligence==1.0.0b4
