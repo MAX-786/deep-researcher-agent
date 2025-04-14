@@ -135,7 +135,7 @@ export function ChatInterface({
             <span className="sr-only">Send</span>
           </Button>
 
-          <input type="file" ref={fileInputRef} onChange={handleFileChange} className="hidden" multiple />
+          <input type="file" ref={fileInputRef} accept="application/pdf" onChange={handleFileChange} className="hidden" multiple />
         </form>
       </div>
     </div>
