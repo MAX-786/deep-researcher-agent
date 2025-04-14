@@ -81,7 +81,7 @@ export function ChatInterface({
                   )}
 
                   <Card className={`${message.role === "user" ? "bg-primary text-primary-foreground" : "bg-muted"}`}>
-                    <CardContent className="p-3">
+                    <CardContent className="p-2">
                       <div className="whitespace-pre-wrap">{message.content}</div>
                     </CardContent>
                   </Card>

@@ -44,12 +44,14 @@ export function ChatSidebar() {
   const { state } = useSidebar()
   const [searchQuery, setSearchQuery] = useState("")
   const [ ThemeIcon, setThemeIcon ] = useState(<Sun className="h-4 w-4 shrink-0" />)
+  const [themeText, setThemeText] = useState("Light")
   const isCollapsed = state === "collapsed"
 
   const filteredChats = previousChats.filter((chat) => chat.title.toLowerCase().includes(searchQuery.toLowerCase()))
 
   useEffect(() => {
-    setThemeIcon(theme === "dark" ? <Sun className="h-4 w-4 shrink-0" /> : <Moon className="h-4 w-4 shrink-0" />)
+    setThemeIcon(theme === "dark" ? <Moon className="h-4 w-4 shrink-0" /> : <Sun className="h-4 w-4 shrink-0" />)
+    setThemeText(theme === "dark" ? "Dark" : "Light")
   }, [theme])
 
   return (
@@ -112,7 +114,7 @@ export function ChatSidebar() {
               className="justify-start gap-2"
             >
               {ThemeIcon}
-              {!isCollapsed && <span>{theme?.toLocaleUpperCase()}</span>}
+              {!isCollapsed && <span>{themeText}</span>}
             </SidebarMenuButton>
           </SidebarMenuItem>
 
