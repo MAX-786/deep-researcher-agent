@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { MessageSquare, PlusCircle, Moon, Sun, Settings, LogOut, User, Bell, Languages } from "lucide-react"
 import { useTheme } from "next-themes"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
@@ -43,9 +43,14 @@ export function ChatSidebar() {
   const { theme, setTheme } = useTheme()
   const { state } = useSidebar()
   const [searchQuery, setSearchQuery] = useState("")
+  const [ ThemeIcon, setThemeIcon ] = useState(<Sun className="h-4 w-4 shrink-0" />)
   const isCollapsed = state === "collapsed"
 
   const filteredChats = previousChats.filter((chat) => chat.title.toLowerCase().includes(searchQuery.toLowerCase()))
+
+  useEffect(() => {
+    setThemeIcon(theme === "dark" ? <Sun className="h-4 w-4 shrink-0" /> : <Moon className="h-4 w-4 shrink-0" />)
+  }, [theme])
 
   return (
     <Sidebar collapsible="icon">
@@ -106,8 +111,8 @@ export function ChatSidebar() {
               tooltip="Toggle theme"
               className="justify-start gap-2"
             >
-              {theme === "dark" ? <Sun className="h-4 w-4 shrink-0" /> : <Moon className="h-4 w-4 shrink-0" />}
-              {!isCollapsed && <span>Toggle Theme</span>}
+              {ThemeIcon}
+              {!isCollapsed && <span>{theme?.toLocaleUpperCase()}</span>}
             </SidebarMenuButton>
           </SidebarMenuItem>
 
