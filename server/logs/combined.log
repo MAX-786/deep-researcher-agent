@@ -1,0 +1,8 @@
+{"ip":"::ffff:127.0.0.1","level":"info","message":"Incoming request","method":"POST","path":"/api/auth/login","service":"deep-researcher-api","timestamp":"2025-04-15T03:15:40.912Z","userAgent":"undici"}
+{"ip":"::ffff:127.0.0.1","level":"info","message":"Incoming request","method":"POST","path":"/api/auth/login","service":"deep-researcher-api","timestamp":"2025-04-15T03:16:11.884Z","userAgent":"undici"}
+{"ip":"::ffff:127.0.0.1","level":"info","message":"Incoming request","method":"POST","path":"/api/chat","service":"deep-researcher-api","timestamp":"2025-04-15T03:18:24.721Z","userAgent":"undici"}
+{"level":"info","message":"Chat request received","messageCount":1,"service":"deep-researcher-api","timestamp":"2025-04-15T03:18:24.722Z","userId":"anonymous"}
+{"level":"info","message":"Generating LLM response","messageCount":1,"service":"deep-researcher-api","timestamp":"2025-04-15T03:18:24.723Z"}
+{"ip":"::ffff:127.0.0.1","level":"info","message":"Incoming request","method":"POST","path":"/api/chat","service":"deep-researcher-api","timestamp":"2025-04-15T03:18:34.441Z","userAgent":"undici"}
+{"level":"info","message":"Chat request received","messageCount":3,"service":"deep-researcher-api","timestamp":"2025-04-15T03:18:34.443Z","userId":"anonymous"}
+{"level":"info","message":"Generating LLM response","messageCount":3,"service":"deep-researcher-api","timestamp":"2025-04-15T03:18:34.444Z"}
