@@ -1,8 +1,10 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import { useRouter } from "next/navigation"
 import { MessageSquare, PlusCircle, Moon, Sun, Settings, LogOut, User, Bell, Languages } from "lucide-react"
 import { useTheme } from "next-themes"
+import { useAuth } from "@/contexts/auth-context"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import {
@@ -42,8 +44,10 @@ const previousChats = [
 export function ChatSidebar() {
   const { theme, setTheme } = useTheme()
   const { state } = useSidebar()
+  const { user, logout } = useAuth()
+  const router = useRouter()
   const [searchQuery, setSearchQuery] = useState("")
-  const [ ThemeIcon, setThemeIcon ] = useState(<Sun className="h-4 w-4 shrink-0" />)
+  const [ThemeIcon, setThemeIcon] = useState(<Sun className="h-4 w-4 shrink-0" />)
   const [themeText, setThemeText] = useState("Light")
   const isCollapsed = state === "collapsed"
 
@@ -53,6 +57,18 @@ export function ChatSidebar() {
     setThemeIcon(theme === "dark" ? <Moon className="h-4 w-4 shrink-0" /> : <Sun className="h-4 w-4 shrink-0" />)
     setThemeText(theme === "dark" ? "Dark" : "Light")
   }, [theme])
+
+  const handleLogout = () => {
+    logout()
+    router.push("/login")
+  }
+
+  const handleNewChat = () => {
+    // Clear messages and start a new chat
+    // This would typically reset the chat state in the parent component
+    // For now, we'll just reload the page as a simple implementation
+    window.location.reload()
+  }
 
   return (
     <Sidebar collapsible="icon">
@@ -65,6 +81,7 @@ export function ChatSidebar() {
             variant="outline"
             className={`w-full ${isCollapsed ? "justify-center p-2 h-8 aspect-square" : "justify-start gap-2"}`}
             title="New Chat"
+            onClick={handleNewChat}
           >
             <PlusCircle className="h-4 w-4 shrink-0" />
             {!isCollapsed && <span>New Chat</span>}
@@ -142,7 +159,7 @@ export function ChatSidebar() {
                   <span>Language</span>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>
+                <DropdownMenuItem onClick={handleLogout}>
                   <LogOut className="mr-2 h-4 w-4" />
                   <span>Log out</span>
                 </DropdownMenuItem>
@@ -154,9 +171,9 @@ export function ChatSidebar() {
             <SidebarMenuButton tooltip="Profile" className="justify-start gap-2">
               <Avatar className="h-6 w-6 shrink-0">
                 <AvatarImage src="/placeholder.svg?height=32&width=32" />
-                <AvatarFallback>US</AvatarFallback>
+                <AvatarFallback>{user?.username?.substring(0, 2).toUpperCase() || 'US'}</AvatarFallback>
               </Avatar>
-              {!isCollapsed && <span className="truncate">User Profile</span>}
+              {!isCollapsed && <span className="truncate">{user?.username || 'User Profile'}</span>}
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
